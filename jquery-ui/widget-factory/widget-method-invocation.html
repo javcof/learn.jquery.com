@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+</head>
+<body>
+	<h2 class="demoHeaders">Dialog</h2>
+	<p>
+		<button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+			<span class="ui-icon ui-icon-newwin"></span>Open Dialog
+		</button>
+	</p>
+	
+	<!-- ui-dialog -->
+	<div id="dialog" title="Dialog Title">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+    <script src="../../lib/js/jquery-1.8.3.js"></script>
+    <script src="../../lib/js/jquery-ui.js"></script>
+    <script>
+        $(function() {
+			$( "#dialog" ).dialog({
+				autoOpen: false,
+				width: 400,
+				buttons: [
+					{
+						text: "Ok",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					},
+					{
+						text: "Cancel",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				]
+			});
+        });
+    </script>
+</body>

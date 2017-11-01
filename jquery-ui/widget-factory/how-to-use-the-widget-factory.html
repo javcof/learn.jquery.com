@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="js/jquery-1.8.3.js"></script>
+    <script src="js/jquery-ui-1.9.2.custom.js"></script>
+    <script>
+        $(function() {
+            $.widget("ns.plugin", {
+                // default options.
+                options: {
+                    param1: "foo",
+                    param2: "bar",
+                    param3: "baz"
+                },
+
+                _create: function() {
+                    // Plugin logic goes here.
+                }
+            });
+
+            $.widget("custom.progressbar", {
+
+                options: {
+                    value: 0
+                },
+
+                _create: function() {
+                    var progress = this.options.value + "%";
+                    this.element
+                        .addClass("ui-progressbar")
+                        .text(progress);
+                },
+
+                _setOption: function(key, value) {
+                    if (key === "value") {
+                        value = this._constrain(value);
+                    }
+                    this._super(key, value);
+                    this.refresh();
+                },
+
+                value: function(value) {
+
+                    // No value passed, act as a getter.
+                    if (value === undefined) {
+                        return this.options.value;
+                    }
+
+                    // Value passed, act as a setter.
+                    this.options.value = this._constrain(value);
+                    this.refresh();
+                },
+
+                // Create a private method
+                _constrain: function(value) {
+                    if (value > 100) {
+                        value = 100;
+                    }
+                    if (value < 0) {
+                        value = 0;
+                    }
+                    return value;
+                },
+
+                refresh: function() {
+                    var progress = this.options.value + "%";
+                    this.element.text(progress);
+                    if (this.options.value === 100) {
+                        this._trigger("complete", null, { value: 100 });
+                    }
+                },
+                _destroy: function() {
+                    this.element
+                        .removeClass("progressbar")
+                        .text("");
+
+                    console.log("_destroy method is invoked.");
+                }
+            });
+
+            $.custom.progressbar.prototype.reset = function() {
+                this._setOption("value", 0);
+            }
+
+            var bar = $("<div></div")
+                .appendTo("body")
+                .progressbar({
+                    value: 20,
+                    complete: function() {
+                        console.log("Callback are great!;");
+                    }
+                });
+
+            bar.progressbar("value", 40);
+            bar.progressbar("value", 60);
+            bar.progressbar("option", "value", 80);
+            bar.progressbar("option", "value", 100);
+            bar.remove();
+        });
+    </script>
+</body>
