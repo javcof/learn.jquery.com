@@ -1,11 +1,11 @@
 ### Event Helpers
-jQuery offers a few event-related helper functions that save you a few keystrokes. Here is an example of one, the `.hover()` function.
+jQuery 提供了一些事件相关的帮助函数，`.hover()` 函数就是其中的一个。
 
 `.hover()`
 
-The `hover()` method lets you pass one or two functions to be run when the `mouseenter` and `mouseleave` events occur on an element. If you pass one function, it will be run for both events; if you pass two functions, the first will fun for `mouseenter`, and the second will run for `mouseleave`.
+当一个元素上触发 `mouseenter` 和 `mouseleave` 事件时，需要给 `hover()` 方法传递两个函数。如果只传递了一个函数，会被两个事件触发；如果传递了两个函数，第一个会被 `mouseenter` 事件触发，第二个则会被 `mouseleave` 事件触发。
 
-**Note:** Prior to jQuery 1.4, the `.hover()` method required two functions.
+**备注：** jQuery 1.4 以前的版本, `.hover()` 方法必须传递两个函数。
 
 ```javascript
 // The hover helper function
