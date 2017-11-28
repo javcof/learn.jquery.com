@@ -10,7 +10,7 @@ jQuery 提供了一些事件相关的帮助函数，`.hover()` 函数就是其�
 ```javascript
 // The hover helper function
 $("#menu li").hover(function() {
-    $(this).toggleClass("");
+    $(this).toggleClass("hover");
 })
 ```
 You can find more helper functions on the [API site for Events](https://api.jquery.com/category/events/).
