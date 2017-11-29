@@ -1,9 +1,9 @@
 ### Events
-jQuery provides simple methods for attaching event handlers to selections. When an event occurs, the provided function is executed. Inside the function, `this` refers to the DOM element that initiated the event.
+jQuery 提供了简单易用的方法为选择的元素绑定事件。当事件触发时，事件处理函数被执行。 `this` 指向初始化事件的 DOM 元素。
 
 For details on jQuery events, visit the [Event documentation on api.jquery.com](http://api.jquery.com/category/events/)
 
-The event handling function can receive and event object. This object can be used to determine the nature of the event, and to prevent the event's default behavior.
+事件处理函数会自动初始化一个事件对象。这个对象可以用于检测原生的事件对象，或者阻止事件的默认行为。
 
 For details on the event object, visit the [Event object documentation on api.jquery.com](http://api.jquery.com/category/events/event-object/)
 
