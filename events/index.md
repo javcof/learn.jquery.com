@@ -3,7 +3,7 @@ jQuery 提供了简单易用的方法为选择的元素绑定事件。当事件�
 
 For details on jQuery events, visit the [Event documentation on api.jquery.com](http://api.jquery.com/category/events/)
 
-事件处理函数会自动初始化一个事件对象。这个对象可以用于检测原生的事件对象，或者阻止事件的默认行为。
+事件处理函数会自动初始化一个事件对象。可以通过 `event.originalEvent` 获取原生事件对象，或者通过 `event.preventDefault()` 阻止事件的默认行为。
 
 For details on the event object, visit the [Event object documentation on api.jquery.com](http://api.jquery.com/category/events/event-object/)
 
