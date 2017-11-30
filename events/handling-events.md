@@ -31,7 +31,7 @@ $("div").on("mouseenter mouseleave", function() {
 ```
 
 #### 多事件，多事件处理函数
-`.on()` accepts an object containing multiple events and handlers.
+`.on()` 接收一个对象，包括多个事件和多个事件处理函数
 
 ```javascript
 $("div").on({
@@ -57,7 +57,6 @@ $("div").on("click", function(event) {
 ```
 
 #### 为事件处理函数传递数据
-You can pass your own data to the event object.
 
 ```javascript
 $("p").on("click", {
@@ -67,8 +66,7 @@ $("p").on("click", {
 })
 ```
 
-#### 为当前不存在的元素绑定事件处理函数
-This is called *event delegation*. Here's an example just for completeness, but see the page on [Event Delegation](#) for a full explanation.
+#### 事件委托
 
 ```javascript
 $("ul").on("click", "li", function() {
