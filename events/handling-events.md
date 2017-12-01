@@ -4,7 +4,7 @@ jQuery 提供了 `.on()` 方法，用于为选中元素绑定事件，也是 jQu
 `.on()` 方法提供许多有用的特性:
 
 #### Example
-###### 简单事件绑定
+##### 简单事件绑定
 
 ```javascript
 // When any <p /> tag is clicked, we expect to see '<p /> was clicked' in the console'
@@ -13,7 +13,7 @@ $("p").on("click", function() {
 })
 ```
 
-###### 多事件绑定，单一事件处理函数
+##### 多事件绑定，单一事件处理函数
 
 ```javascript
 // When a user focuses on or changes any input element,
@@ -23,7 +23,7 @@ $("div").on("mouseenter mouseleave", function() {
 })
 ```
 
-###### 多事件绑定
+##### 多事件绑定
 `.on()` 可以接收一个 json 对象，可以绑定多个事件和事件处理函数
 
 ```javascript
@@ -40,7 +40,7 @@ $("div").on({
 });
 ```
 
-###### 事件对象
+##### 事件对象
 
 ```javascript
 $("div").on("click", function(event) {
@@ -49,7 +49,7 @@ $("div").on("click", function(event) {
 })
 ```
 
-###### 传递事件数据
+##### 传递事件数据
 
 ```javascript
 $("p").on("click", {
@@ -59,7 +59,7 @@ $("p").on("click", {
 })
 ```
 
-###### 事件委托
+##### 事件委托
 
 ```javascript
 $("ul").on("click", "li", function() {
@@ -67,7 +67,7 @@ $("ul").on("click", "li", function() {
 });
 ```
 
-###### 一次性事件绑定
+##### 一次性事件绑定
 `.one()` 方法提供了一次性事件绑定的途径
 
 ```javascript
@@ -82,7 +82,7 @@ $("p").one("click", function() {
 
 `.one()` 方法的提供了和 `.on()` 方法一样参数和调用方式。
 
-###### 解除事件绑定
+##### 解除事件绑定
 
 `.off()` 方法可以清理绑定的事件，复杂的用户接口、过多的事件绑定都可能造成浏览器的性能问题。清理不必要的事件，也是很有必要的。
 
@@ -107,7 +107,6 @@ $("p").on("click", foo).on("click", bar);
 $("p").off("click", bar)
 ```
 
-
-###### 命名空间
+##### 命名空间
 
 事件命名空间，对于编写复杂应用或者 jQuery 插件，是很有必要的。
