@@ -67,10 +67,11 @@ $("ul").on("click", "li", function() {
 });
 ```
 
-#### Connecting Events to Run Only Once
+###### 一次性事件绑定
 Sometimes you need to particular handler to run only once, after that, you may want to no handler to run, or you may want a different handler to run. jQuery provides the `.one()` method for this purpose.
 
 ```javascript
+// Switching handlers using the '.one()' method
 $("p").one("click", function() {
     console.log("You just clicked this for the first time!");
     $(this).click(function() {
@@ -83,7 +84,7 @@ The `.one()` method is especilly useful if you need to do some complicated setup
 
 `.one()` accepts the same arguments as `.on()` which means it supports multiple events to one or multiple handlers, passing custom data and event delegation.
 
-#### Disconnecting Events
+###### 解除事件绑定
 
 Although all the fun of jQuery occurs in the `.on()` method, its counterpart is just as important if you want to be a responsible developer. `.off()` cleans up that event binding when you don't need it anymore. Complex user interfaces with lots of event bindings can bog down browser performance, so suing the `.off()` method diligently is a best practice to ensure that you only have the event bindings that you need, when you need them.
 
