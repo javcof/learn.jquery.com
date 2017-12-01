@@ -3,7 +3,7 @@ jQuery 提供了 `.on()` 方法，用于为选中元素绑定事件，也是 jQu
 
 `.on()` 方法提供许多有用的特性:
 
-** 简单事件绑定 **
+###### 简单事件绑定
 
 ```javascript
 // When any <p /> tag is clicked, we expect to see '<p /> was clicked' in the console'
@@ -12,7 +12,7 @@ $("p").on("click", function() {
 })
 ```
 
-** 多事件绑定，单一事件处理函数 **
+###### 多事件绑定，单一事件处理函数
 
 ```javascript
 // When a user focuses on or changes any input element,
@@ -22,7 +22,7 @@ $("div").on("mouseenter mouseleave", function() {
 })
 ```
 
-** 多事件绑定 **
+###### 多事件绑定
 `.on()` 可以接收一个 json 对象，可以绑定多个事件和事件处理函数
 
 ```javascript
@@ -39,7 +39,7 @@ $("div").on({
 });
 ```
 
-** 事件对象 **
+###### 事件对象
 
 ```javascript
 $("div").on("click", function(event) {
@@ -48,7 +48,7 @@ $("div").on("click", function(event) {
 })
 ```
 
-** 传递事件数据 **
+###### 传递事件数据
 
 ```javascript
 $("p").on("click", {
@@ -58,7 +58,7 @@ $("p").on("click", {
 })
 ```
 
-** 事件委托 **
+###### 事件委托
 
 ```javascript
 $("ul").on("click", "li", function() {

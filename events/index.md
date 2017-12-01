@@ -10,7 +10,7 @@ For details on the event object, visit the [Event object documentation on api.jq
 * jQuery Event Basics
 * [Event Helpers](https://github.com/javcof/learn.jquery.com/blob/master/events/event-helpers.md)
 * Introducing events
-* Handing events
+* [Handing events](handling-events.md)
 * Inside the Event Handing function
 * Understanding Event Delegation
 * Triggering Event handlers
