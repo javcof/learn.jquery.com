@@ -3,6 +3,7 @@ jQuery 提供了 `.on()` 方法，用于为选中元素绑定事件，也是 jQu
 
 `.on()` 方法提供许多有用的特性:
 
+#### Example
 ###### 简单事件绑定
 
 ```javascript
@@ -65,3 +66,49 @@ $("ul").on("click", "li", function() {
     console.log("Something in a <ul> was clicked, and we detected that it was an <li> element.");
 });
 ```
+
+#### Connecting Events to Run Only Once
+Sometimes you need to particular handler to run only once, after that, you may want to no handler to run, or you may want a different handler to run. jQuery provides the `.one()` method for this purpose.
+
+```javascript
+$("p").one("click", function() {
+    console.log("You just clicked this for the first time!");
+    $(this).click(function() {
+        console.log("You have clicked this before!");
+    })
+});
+```
+
+The `.one()` method is especilly useful if you need to do some complicated setup the first time an element is clicked, but not subsequent times.
+
+`.one()` accepts the same arguments as `.on()` which means it supports multiple events to one or multiple handlers, passing custom data and event delegation.
+
+#### Disconnecting Events
+
+Although all the fun of jQuery occurs in the `.on()` method, its counterpart is just as important if you want to be a responsible developer. `.off()` cleans up that event binding when you don't need it anymore. Complex user interfaces with lots of event bindings can bog down browser performance, so suing the `.off()` method diligently is a best practice to ensure that you only have the event bindings that you need, when you need them.
+
+```javascript
+// Unbinding all click handlers on a selection
+$("p").off("click");
+```
+
+```javascript
+// Unbinding a particular click handler, using a reference to the function
+var foo = function() {
+    console.log("foo");
+};
+
+var bar = function() {
+    console.log("bar");
+};
+
+$("p").on("click", foo).on("click", bar);
+
+// foo will stay bound to the click event
+$("p").off("click", bar)
+```
+
+
+#### Namespcing Events
+
+For complex applications and for plugins you share with others, it can be useful to namespace you events so you don't unintentionally disconnect events that you didn't or couldn't know about. For details, see [Event Namespcing](#)
