@@ -68,10 +68,10 @@ $("ul").on("click", "li", function() {
 ```
 
 ###### 一次性事件绑定
-Sometimes you need to particular handler to run only once, after that, you may want to no handler to run, or you may want a different handler to run. jQuery provides the `.one()` method for this purpose.
+`.one()` 方法提供了一次性事件绑定的途径
 
 ```javascript
-// Switching handlers using the '.one()' method
+// 使用 '.one()' 转换事件处理函数
 $("p").one("click", function() {
     console.log("You just clicked this for the first time!");
     $(this).click(function() {
@@ -80,13 +80,11 @@ $("p").one("click", function() {
 });
 ```
 
-The `.one()` method is especilly useful if you need to do some complicated setup the first time an element is clicked, but not subsequent times.
-
-`.one()` accepts the same arguments as `.on()` which means it supports multiple events to one or multiple handlers, passing custom data and event delegation.
+`.one()` 方法的提供了和 `.on()` 方法一样参数和调用方式。
 
 ###### 解除事件绑定
 
-Although all the fun of jQuery occurs in the `.on()` method, its counterpart is just as important if you want to be a responsible developer. `.off()` cleans up that event binding when you don't need it anymore. Complex user interfaces with lots of event bindings can bog down browser performance, so suing the `.off()` method diligently is a best practice to ensure that you only have the event bindings that you need, when you need them.
+`.off()` 方法可以清理绑定的事件，复杂的用户接口、过多的事件绑定都可能造成浏览器的性能问题。清理不必要的事件，也是很有必要的。
 
 ```javascript
 // Unbinding all click handlers on a selection
@@ -110,6 +108,6 @@ $("p").off("click", bar)
 ```
 
 
-#### Namespcing Events
+###### 命名空间
 
-For complex applications and for plugins you share with others, it can be useful to namespace you events so you don't unintentionally disconnect events that you didn't or couldn't know about. For details, see [Event Namespcing](#)
+事件命名空间，对于编写复杂应用或者 jQuery 插件，是很有必要的。
