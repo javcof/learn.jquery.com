@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Introducing Custom Events | jQuery Learning Center</title>
+        <style>
+            * {
+                font-size: 12px;
+            }
+
+            .room, #master_switch {
+                clear: both;
+            }
+            .room div, #master_switch {
+                width: 100px;
+                height: 100px;
+                border: 1px solid #eee;
+                margin: 10px;
+                float: left;
+            }
+
+            #master_switch {
+                width: 468px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="kitchen" class="room">
+            <div class="lightbulb on">Lightbul</div>
+            <div class="switch">Switch</div>
+            <div class="switch">Switch</div>
+            <div class="clapper">Clapper</div>
+        </div>
+        <div id="bedroom" class="room">
+            <div class="lightbulb on">lightbulb</div>
+            <div class="switch">Switch</div>
+            <div class="switch">Switch</div>
+            <div class="clapper">Clapper</div>
+        </div>
+        <div id="master_switch">Master Switch</div>
+
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script>
+            $(function() {
+                /*
+                $(".switch, .clapper").click(function() {
+                    var light = $(this).closest(".room").find(".lightbulb");
+                    if (light.is(".on")) {
+                        light.removeClass("on").addClass("off");
+                    } else {
+                        light.removeClass("off").addClass("on");
+                    }
+                });
+                */
+
+                /*
+                $(".lightbulb").on("light:toggle", function(event) {
+                    var light = $(this);
+                    if (light.is(".on")) {
+                        light.removeClass("on").addClass("off");
+                    } else {
+                        light.removeClass("off").addClass("on");
+                    }
+                });
+
+                $(".switch, .clapper").click(function() {
+                    var room = $(this).closest(".room");
+                    room.find(".lightbulb").trigger("light:toggle");
+                });
+                */
+
+                $(".lightbulb").on({
+                    "light:toggle": function(event) {
+                        var light = $(this);
+                        if (light.is(".on")) {
+                            light.trigger("light:off");
+                        } else {
+                            light.trigger("light:on");
+                        }
+                    },
+                    "light:on": function(event) {
+                        $(this).removeClass("off").addClass("on");
+                    },
+                    "light:off": function(event) {
+                        $(this).removeClass("on").addClass("off");
+                    }
+                });
+
+                $(".switch, .clapper").click(function() {
+                    var room = $(this).closest(".room");
+                    room.find(".lightbulb").trigger("light:toggle");
+                });
+
+                $("#master_switch").click(function() {
+                    var lightbulb = $(".lightbulb");
+                    if (lightbulb.is(".on")) {
+                        lightbulb.trigger("light:off");
+                    } else {
+                        lightbulb.trigger("light:on");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
