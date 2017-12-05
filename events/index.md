@@ -7,13 +7,13 @@ For details on jQuery events, visit the [Event documentation on api.jquery.com](
 
 For details on the event object, visit the [Event object documentation on api.jquery.com](http://api.jquery.com/category/events/event-object/)
 
-* jQuery Event Basics
-* [Event Helpers](https://github.com/javcof/learn.jquery.com/blob/master/events/event-helpers.md)
+* [jQuery 事件基础](event-basics.md)
+* [事件 Helpers](event-helpers.md)
 * Introducing events
-* [Handing events](handling-events.md)
+* [事件处理函数](handling-events.md)
 * Inside the Event Handing function
 * Understanding Event Delegation
 * Triggering Event handlers
 * History of jQuery Events
-* Introducing Custom events
+* [用户自定义事件](introduction-to-custom-events.md)
 * jQuery Event Extensions
