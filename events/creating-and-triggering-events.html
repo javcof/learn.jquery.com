@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+        <div id="elem"></div>
+        <script>
+            var elem = document.getElementById('elem');
+
+            /*
+            // W3C spec
+            var event = new Event('build');
+
+            // Listen for the event
+            elem.addEventListener('build', handler, false);
+
+            // Dispatch the event.
+            elem.dispatchEvent(event);
+            */
+
+            /*
+            // IE9+ supported
+            // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createEvent
+            // https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent
+            var event = document.createEvent('Event');
+            event.initEvent('build', true, true);
+
+            // Listen for the event
+            elem.addEventListener('build', handler, false);
+
+            // Dispatch the event.
+            elem.dispatchEvent(event);
+            */
+
+            /*
+            // old browser(ie6-ie8)
+            var event = document.createEventObject();
+            event.eventType = 'message';
+
+            // Listen for the event
+            document.attachEvent('onclick', handler);
+
+            // Dispatch the event.
+            document.fireEvent('onclick', event);
+
+            */
+
+            // jquery event
+            $(function() {
+                $("#elem").on("build", handler);
+                $("#elem").trigger("build");
+            });
+
+            function handler() {
+                console.log('Custom event "build" is dispatch.');
+            }
+        </script>
+    </body>
+</html>
