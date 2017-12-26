@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Events drag</title>
+        <style>
+            #draggable {
+                width: 200px;
+                height: 20px;
+                text-align: center;
+                background: white;
+            }
+            .dropzone {
+                widht: 200px;
+                height: 20px;
+                background: blueviolet;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dropzone">
+            <div id="draggable" draggable="true">
+                This div is draggable
+            </div>
+        </div>
+        <div class="dropzone"></div>
+        <div class="dropzone"></div>
+        <div class="dropzone"></div>
+        <script>
+            // https://developer.mozilla.org/en-US/docs/Web/Events/drag
+          var dragged;
+
+          /* events fired on the draggable target */
+          document.addEventListener("drag", function( event ) {
+
+          }, false);
+
+          document.addEventListener("dragstart", function(event) {
+
+              // store a ref. on the dragged elem
+              dragged = event.target;
+
+              // make it half transparent.
+              event.target.style.opacity = .5;
+          }, false);
+
+          document.addEventListener("dragend", function(event) {
+
+              // reset the transparency
+              event.target.style.opacity = "";
+          }, false);
+
+        </script>
+    </body>
+</html>

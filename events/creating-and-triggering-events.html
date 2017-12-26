@@ -33,10 +33,9 @@
             elem.dispatchEvent(event);
             */
 
-            /*
             // old browser(ie6-ie8)
             var event = document.createEventObject();
-            event.eventType = 'message';
+            event.data = 'build';
 
             // Listen for the event
             document.attachEvent('onclick', handler);
@@ -44,13 +43,13 @@
             // Dispatch the event.
             document.fireEvent('onclick', event);
 
-            */
-
+            /*
             // jquery event
             $(function() {
                 $("#elem").on("build", handler);
                 $("#elem").trigger("build");
             });
+            */
 
             function handler() {
                 console.log('Custom event "build" is dispatch.');
