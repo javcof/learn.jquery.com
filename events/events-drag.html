@@ -38,17 +38,61 @@
 
           document.addEventListener("dragstart", function(event) {
 
+              // Firefox won't allow u to drag the element unless u manually set some data to go with it.
+              // https://stackoverflow.com/questions/3977596/how-to-make-divs-in-html5-draggable-for-firefox
+              event.dataTransfer.setData("text/plain", null);
+
               // store a ref. on the dragged elem
               dragged = event.target;
 
               // make it half transparent.
               event.target.style.opacity = .5;
+
           }, false);
 
           document.addEventListener("dragend", function(event) {
 
               // reset the transparency
               event.target.style.opacity = "";
+
+          }, false);
+
+          // Events fired on the drop targets
+          document.addEventListener("dragover", function(event) {
+
+              event.preventDefault();
+
+          }, false);
+
+          document.addEventListener("dragenter", function(event) {
+
+              // highlight potential drop target when the draggable element enters it
+              if (event.target.className == "dropzone") {
+                  event.target.style.background = "purple";
+              }
+
+          }, false);
+
+          document.addEventListener("dragleave", function(event) {
+
+              // reset background of potential drop target when the draggable element leaves it
+              if (event.target.className == "dropzone") {
+                  event.target.style.background = "";
+              }
+
+          }, false);
+
+          document.addEventListener("drop", function(event) {
+
+              // Prevent default action (open as link for some elements)
+              // TODO: Firefox don't prevent browser default behavior, when i call preventDefault method.
+              event.preventDefault();
+              if (event.target.className == "dropzone") {
+                  event.target.style.background = "";
+                  dragged.parentNode.removeChild(dragged);
+                  event.target.appendChild(dragged);
+              }
+
           }, false);
 
         </script>
