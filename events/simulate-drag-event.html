@@ -25,34 +25,54 @@
         <script>
             $(function() {
                 var dragged = false,
-                    x = 0,
-                    y = 0;
+                    pointer = {
+                        x: 0,
+                        y: 0
+                    },
+                    offset = 10,
+                    once = true;
 
                 $('.draggable').on({
                     'mousedown': function(e) {
-                        x = e.clientX - e.target.offsetLeft;
-                        y = e.clientY - e.target.offsetTop;
+                        pointer.x = e.clientX - e.target.offsetLeft;
+                        pointer.y = e.clientY - e.target.offsetTop;
 
                         dragged = true;
-                        if (dragged) {
-                            e.target.style.opacity = .5;
-                        }
                     },
                     'mousemove': function(e) {
-                        if (dragged) {
-                            var dragging = e.target;
-                            $(dragging).css({
-                                position: 'absolute',
-                                top: (e.clientY - y).toString() + 'px',
-                                left: (e.clientX - x).toString() + 'px'
-                            });
+                        if (dragged && once) {
+                            once = false;
+                            $(this).trigger('mousedragstart');
+                        }
+
+                        if (dragged &&
+                            (
+                                Math.abs(e.clientX - e.target.offsetLeft - pointer.x) >= offset ||
+                                Math.abs(e.clientY - e.target.offsetTop - pointer.y) >= offset)) {
+                            $(this).trigger('mousedrag', [e]);
                         }
                     },
                     'mouseup': function(e) {
                         dragged = false;
                         if (!dragged) {
-                            e.target.style.opacity = '';
+                            once = true;
+                            $(this).trigger('mousedragend');
                         }
+                    },
+
+                    'mousedragstart': function(e) {
+                        e.target.style.opacity = .5;
+                    },
+                    'mousedrag': function(e, data) {
+                        var dragging = data.target;
+                        $(dragging).css({
+                            position: 'absolute',
+                            top: (data.clientY - pointer.y).toString() + 'px',
+                            left: (data.clientX - pointer.x).toString() + 'px'
+                        });
+                    },
+                    'mousedragend': function(e) {
+                        e.target.style.opacity = '';
                     }
                 });
             });
